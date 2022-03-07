@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-black ">
+    <div class="container-fluid">
+        <a class="navbar-brand bg-warning text-center text-wrap border-warning rounded fw-bold" style="width: 60px;"href="{{path('app_front')}}">IMDb</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if app.user == null %}
+
+
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="{{ path('app_inscription')}}">Inscription</a>
+                    </li> 
+
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="{{ path('app_login')}}">Connexion</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contact</a>
+                    </li>
+
+                {% else %}
+                            
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="{{ path('app_profil')}}">Profil</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">Tous les films</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">Tous les artistes</a>
+                    </li>      
+                    <li class="nav-item">
+                        <a class="nav-link  text-secondary" href="">Contact</a>
+                    </li>
+
+            </ul>
+                <div class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% if "ROLE_ADMIN" in app.user.roles %}
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="{{path('app_admin')}}">Accueil Admin</a>
+                            </li>
+                            {# <li class="nav-item">
+                                <a class="nav-link text-danger" href="#"><i class="fas fa-power-off"></i></a>
+                            </li> #}
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="app_artiste_index">Gestion des Artistes</a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="app_film_index">Gestion des Films</a>
+                            </li>
+                        {% endif %}
+                      
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="{{ path('app_logout')}}">Deconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+ 
+
+
+
+{# 
+pas connecte :
+    accueil
+    contact
+    connexion
+    inscription
+
+
+connete :
+    user 
+        Accueil
+        Profil
+        liste films
+        liste Artistes
+        deconnexion
+Connete :
+    Admin
+        Accueil
+        Accueil Amin
+        liste films
+        liste Artistes
+        Gestion
+        deconnexion
+ #}

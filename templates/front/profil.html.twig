@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center text-primary">Espace Personnel</h1>
+<h2 class="text-center">Bienvenue, {{ app.user.prenom ~ " " ~ app.user.nom}}</h2>
+
+    {% for type, message in app.flashes %} 
+    {# {{ dump(app.flashes, type, message) }}  #}
+        <div class="col-6 mx-auto text-center alert alert-{{type}}">
+            {{ message.0 }}
+        </div>
+    {% endfor %}
+
+{% endblock %}

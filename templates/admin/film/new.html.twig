@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Film{% endblock %}
+
+{% block body %}
+    <h1 class="text-white">Create new Film</h1>
+    <div class="col-6 mx-auto text-white">
+        {{ include('admin/film/_form.html.twig') }}
+
+        <a href="{{ path('app_film_index') }}">back to list</a>
+    </div>
+{% endblock %}
